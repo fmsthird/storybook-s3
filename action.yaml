@@ -57,7 +57,7 @@ runs:
       with: 
         cond: ${{ inputs.preview == 'true' }}
         if_true: "pr-${{ github.event.pull_request.number }}"
-        if_false: "."
+        if_false: ""
 
     - name: 'Deploy to S3'
       uses: jakejarvis/s3-sync-action@master
