@@ -25,6 +25,9 @@ inputs:
     description: 'Source Directory'
     required: false
     default: 'storybook-static'
+  destination_dir:
+    description: 'Destination Directory'
+    required: false
   preview: 
     description: 'Preview'
     required: false
@@ -60,7 +63,7 @@ runs:
       id: preview
       with: 
         cond: ${{ inputs.preview == 'true' }}
-        if_true: "pr-${{ github.event.pull_request.number }}"
+        if_true: "${{ inputs.destination_dir }}"
         if_false: ""
 
     - name: 'Deploy to S3'
