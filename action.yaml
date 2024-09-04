@@ -21,6 +21,10 @@ inputs:
   aws_s3_endpoint:
     description: 'AWS S3 Endpoint URL'
     required: true
+  source_dir:
+    description: 'Source Directory'
+    required: false
+    default: 'storybook-static'
   preview: 
     description: 'Preview'
     required: false
@@ -68,7 +72,7 @@ runs:
         AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
         AWS_REGION: ${{ inputs.aws_region }}
-        SOURCE_DIR: 'storybook-static'
+        SOURCE_DIR: ${{ inputs.source_dir }}
         AWS_S3_HOST: ${{ inputs.aws_s3_host }}
         DEST_DIR: ${{ steps.preview.outputs.value }}
 
